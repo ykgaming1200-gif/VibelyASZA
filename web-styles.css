@@ -1,0 +1,101 @@
+/* Web-specific styles for desktop experience */
+@media (min-width: 768px) {
+  /* Hover effects for interactive elements */
+  .playlist-card:hover {
+    transform: translateY(-4px);
+    transition: transform 0.2s ease;
+  }
+  
+  .playlist-card:hover .playlist-play-button {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+  }
+  
+  .quick-grid-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  
+  .quick-grid-item:hover .play-button {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+  
+  .song-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Mini player enhancements */
+  .mini-player-desktop {
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #191414;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #535353;
+  }
+  
+  /* Focus styles for keyboard navigation */
+  button:focus,
+  .touchable:focus {
+    outline: 2px solid #1DB954;
+    outline-offset: 2px;
+  }
+  
+  /* Smooth transitions */
+  * {
+    transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  }
+}
+
+/* Loading animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive typography */
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .greeting {
+    font-size: 32px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cover-image,
+  .playlist-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

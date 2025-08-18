@@ -1,0 +1,94 @@
+{
+  "name": "Music Streamer - Your Personal Music Hub",
+  "short_name": "Music Streamer",
+  "description": "Stream your favorite music with our beautiful, responsive music player. Optimized for desktop and mobile with keyboard shortcuts and modern design.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#191414",
+  "theme_color": "#1DB954",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["music", "entertainment", "multimedia"],
+  "icons": [
+    {
+      "src": "/assets/images/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/adaptive-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Desktop view of Music Streamer"
+    },
+    {
+      "src": "/assets/images/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile view of Music Streamer"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Go to home page",
+      "url": "/?shortcut=home",
+      "icons": [
+        {
+          "src": "/assets/images/icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "short_name": "Search",
+      "description": "Search for music",
+      "url": "/?shortcut=search",
+      "icons": [
+        {
+          "src": "/assets/images/icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "short_name": "Library",
+      "description": "View your music library",
+      "url": "/?shortcut=library",
+      "icons": [
+        {
+          "src": "/assets/images/icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

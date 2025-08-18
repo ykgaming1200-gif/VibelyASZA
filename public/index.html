@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streaming App</title>
+    <meta name="description" content="A beautiful music streaming app built with React Native and Expo">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        #root {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #333;
+            border-top: 3px solid #1db954;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #b3b3b3;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .error-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .error-title {
+            color: #ff6b6b;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .error-message {
+            color: #b3b3b3;
+            font-size: 16px;
+            max-width: 400px;
+            line-height: 1.5;
+        }
+        
+        .retry-button {
+            background-color: #1db954;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .retry-button:hover {
+            background-color: #1ed760;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="loading-container" id="loading">
+            <div class="spinner"></div>
+            <div class="loading-text">Loading your music experience...</div>
+        </div>
+        
+        <div class="error-container" id="error">
+            <div class="error-title">Something went wrong</div>
+            <div class="error-message">
+                The app failed to load properly. This might be due to a network issue or browser compatibility.
+            </div>
+            <button class="retry-button" onclick="window.location.reload()">Retry</button>
+        </div>
+    </div>
+    
+    <script>
+        // Show error after 10 seconds if app hasn't loaded
+        setTimeout(() => {
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            
+            if (loading && loading.style.display !== 'none') {
+                loading.style.display = 'none';
+                error.style.display = 'flex';
+            }
+        }, 10000);
+        
+        // Listen for app load events
+        window.addEventListener('load', () => {
+            console.log('Window loaded');
+        });
+        
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
+        
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+    </script>
+</body>
+</html>
