@@ -122,26 +122,29 @@
 
     <div id="root"></div>
 
-    <script type="module">
-      import 'expo-router/entry';
-      const root = document.getElementById('root');
-      const loadingScreen = document.getElementById('loading-screen');
-      const observer = new MutationObserver(() => {
-        if (root && root.childNodes.length > 0 && loadingScreen) {
+    <script>
+      (function() {
+        var loadingScreen = document.getElementById('loading-screen');
+        function fadeOut() {
+          if (!loadingScreen) return;
           loadingScreen.style.transition = 'opacity 300ms ease';
           loadingScreen.style.opacity = '0';
-          setTimeout(() => loadingScreen.remove(), 320);
-          observer.disconnect();
+          setTimeout(function(){ loadingScreen && loadingScreen.remove(); }, 320);
         }
-      });
-      if (root) observer.observe(root, { childList: true });
-      setTimeout(() => {
-        if (loadingScreen) {
-          loadingScreen.style.transition = 'opacity 300ms ease';
-          loadingScreen.style.opacity = '0';
-          setTimeout(() => loadingScreen.remove(), 320);
+        var target = '/public/index.html';
+        try {
+          var prefersHome = true;
+          if (prefersHome) target = '/public/index.html#/(tabs)/home';
+          setTimeout(function(){ window.location.replace(target); }, 30);
+          setTimeout(fadeOut, 500);
+        } catch (e) {
+          console.error('Redirect failed', e);
+          fadeOut();
         }
-      }, 12000);
+      })();
     </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/public/index.html" />
+    </noscript>
 </body>
 </html>
