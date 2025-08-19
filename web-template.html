@@ -2,47 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
-    <!-- Primary Meta Tags -->
     <title>Music Streamer - Your Personal Music Hub</title>
     <meta name="title" content="Music Streamer - Your Personal Music Hub" />
     <meta name="description" content="Stream your favorite music with our beautiful, responsive music player. Optimized for desktop and mobile with keyboard shortcuts and modern design." />
-    
-    <!-- Open Graph / Facebook -->
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yourmusicapp.com/" />
     <meta property="og:title" content="Music Streamer - Your Personal Music Hub" />
     <meta property="og:description" content="Stream your favorite music with our beautiful, responsive music player. Optimized for desktop and mobile with keyboard shortcuts and modern design." />
     <meta property="og:image" content="https://yourmusicapp.com/assets/images/social-preview.png" />
-    
-    <!-- Twitter -->
+
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://yourmusicapp.com/" />
     <meta property="twitter:title" content="Music Streamer - Your Personal Music Hub" />
     <meta property="twitter:description" content="Stream your favorite music with our beautiful, responsive music player. Optimized for desktop and mobile with keyboard shortcuts and modern design." />
     <meta property="twitter:image" content="https://yourmusicapp.com/assets/images/social-preview.png" />
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icon.png" />
-    
-    <!-- Theme -->
+
     <meta name="theme-color" content="#1DB954" />
     <meta name="msapplication-TileColor" content="#191414" />
-    
-    <!-- PWA -->
+
     <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Preload critical resources -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Custom styles for web -->
+
     <link rel="stylesheet" href="/web-styles.css" />
-    
-    <!-- Structured Data -->
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -86,8 +77,7 @@
             <p>Please enable JavaScript in your browser settings and refresh the page.</p>
         </div>
     </noscript>
-    
-    <!-- Loading screen -->
+
     <div id="loading-screen" style="
         position: fixed;
         top: 0;
@@ -115,42 +105,43 @@
         <h2 style="color: #1DB954; margin: 0;">Music Streamer</h2>
         <p style="margin: 10px 0 0 0; opacity: 0.7;">Loading your music experience...</p>
     </div>
-    
+
     <style>
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
         body {
             margin: 0;
             padding: 0;
             background-color: #191414;
             overflow-x: hidden;
         }
-        
-        #root {
-            min-height: 100vh;
-        }
+        #root { min-height: 100vh; }
     </style>
-    
-    <!-- Root element for React -->
+
     <div id="root"></div>
-    
-    <!-- Hide loading screen when app loads -->
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loadingScreen = document.getElementById('loading-screen');
-                if (loadingScreen) {
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transition = 'opacity 0.5s ease';
-                    setTimeout(function() {
-                        loadingScreen.remove();
-                    }, 500);
-                }
-            }, 1000);
-        });
+
+    <script type="module">
+      import 'expo-router/entry';
+      const root = document.getElementById('root');
+      const loadingScreen = document.getElementById('loading-screen');
+      const observer = new MutationObserver(() => {
+        if (root && root.childNodes.length > 0 && loadingScreen) {
+          loadingScreen.style.transition = 'opacity 300ms ease';
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => loadingScreen.remove(), 320);
+          observer.disconnect();
+        }
+      });
+      if (root) observer.observe(root, { childList: true });
+      setTimeout(() => {
+        if (loadingScreen) {
+          loadingScreen.style.transition = 'opacity 300ms ease';
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => loadingScreen.remove(), 320);
+        }
+      }, 12000);
     </script>
 </body>
 </html>
