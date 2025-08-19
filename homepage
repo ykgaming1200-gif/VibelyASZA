@@ -1,0 +1,10 @@
+{
+  "name": "vibelyasza",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://ykgaming1200-gif.github.io/VibelyASZA/",
+  "scripts": {
+    "start": "expo start",
+    "build": "expo export -p web"
+  }
+}
